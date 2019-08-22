@@ -1,30 +1,27 @@
 <?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
 
-$path = $_SERVER["SCRIPT_FILENAME"];
+include_once('collector.php');
+$Collector = new Collector();
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
 
-function console( $data ){
-  file_put_contents("php://stdout", "$data\n");
-}
+    <meta charset="utf-8"/>
+    <title>Collector.php test</title>
 
-if (preg_match('/\.(?:png|jpg|jpeg|gif|js|css)$/', $_SERVER["REQUEST_URI"])) {
-  // сервер возвращает файлы напрямую.
-  return false;
-}
+    <?=( $Collector->js('jquery','3.3.1',true) );?>
+    <?=( $Collector->js('popper','1.14.7',true) );?>
+    <?=( $Collector->js('bootstrap','4.3.1',true) );?>
+    <?=( $Collector->css('bootstrap','4.3.1') );?>
+    <?=( $Collector->js('less','2.7.2') );?>
 
-// $indexFiles = ['index.html', 'index.php'];
-// $routes = [
-//   '^/api(/.*)?$' => '/index.php'
-// ];
-// $requestedAbsoluteFile = dirname(__FILE__) . $_SERVER['REQUEST_URI'];
-// foreach ($routes as $regex => $fn){
-//   if (preg_match('%'.$regex.'%', $_SERVER['REQUEST_URI'])){
-//     $requestedAbsoluteFilec = dirname(__FILE__) . $fn;
-//     break;
-//   }
-// }
-// console( $requestedAbsoluteFilec );
+  </head>
+  
+  <body>
 
+  </body>
 
-
-echo "<p>Добро пожаловать в PHP</p>";
-
+</html>
